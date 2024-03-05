@@ -1,0 +1,13 @@
+<div class="container">
+    <h2 class="title">Get Stock Rating</h2>
+    <div>
+      <input class="input" type="text" [(ngModel)]="userInput" placeholder="Enter Ticker...">
+    </div>
+    <button  (click)="submit()">Submit</button>
+
+    <div class="response">
+      {{ responseMessage }}
+    </div>
+  </div>
+  
+
