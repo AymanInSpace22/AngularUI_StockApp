@@ -1,13 +1,83 @@
-<div class="container">
-    <h2 class="title">Get Stock Rating</h2>
-    <div>
-      <input class="input" type="text" [(ngModel)]="userInput" placeholder="Enter Ticker...">
-    </div>
-    <button  (click)="submit()">Submit</button>
+<!-- <div class="container">
+  <h2 class="title">Get Stock Rating</h2>
+  <div>
+    <input class="input" type="text" [(ngModel)]="userInput" placeholder="Enter Ticker...">
+  </div>
+  <button (click)="submit()">Submit</button>
 
-    <div class="response">
-      {{ responseMessage }}
+  <div class="response">
+    <div><strong>Pros:</strong></div>
+    <ul>
+      <li *ngFor="let pro of pros">{{ pro }}</li>
+    </ul>
+
+    <div><strong>Cons:</strong></div>
+    <ul>
+      <li *ngFor="let con of cons">{{ con }}</li>
+    </ul>
+
+    <div>{{ rating }}</div>
+  </div>
+</div> -->
+
+
+
+
+<!-- <div class="container">
+  <h2 class="title">Get Stock Rating</h2>
+  <div>
+    <input class="input" type="text" [(ngModel)]="userInput" placeholder="Enter Ticker...">
+  </div>
+  <button (click)="submit()">Submit</button>
+
+  <div class="response">
+    <h3>Pros:</h3>
+    <ul>
+      <li *ngFor="let pro of pros">{{ pro }}</li>
+    </ul>
+    <h3>Cons:</h3>
+    <ul>
+      <li *ngFor="let con of cons">{{ con }}</li>
+    </ul>
+    <h3>Rating: {{ rating }}</h3>
+  </div>
+</div> -->
+
+
+
+<!-- app.component.html -->
+<div class="container">
+  <h2 class="title">Get Stock Rating</h2>
+  <div>
+    <input class="input" type="text" [(ngModel)]="userInput" placeholder="Enter Ticker...">
+  </div>
+  <button (click)="submit()">Submit</button>
+  <button *ngIf="!showModal && (responsePros.length > 0 || responseCons.length > 0 || responseRating !== '')" (click)="reopenModal()">Reopen Analysis</button>
+  <!-- Spinner -->
+<app-custom-spinner *ngIf="showSpinner"></app-custom-spinner>
+</div>
+
+
+
+<!-- Modal (same as before) -->
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Analysis Result</h2>
+    <div>
+      <h3>Pros</h3>
+      <ul>
+        <li *ngFor="let pro of responsePros">{{pro}}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Cons</h3>
+      <ul>
+        <li *ngFor="let con of responseCons">{{con}}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>{{responseRating}}</h3>
     </div>
   </div>
-  
-
+</div>
